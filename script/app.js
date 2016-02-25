@@ -137,47 +137,41 @@
                 intro.classList.add('hide');
             }, 1000);
             
-//            app.proces(data);
         },
-//        
-//        proces: function (data) {
-//            
-//            // GET ALL THE ARTICLE ELEMENTS CREATED
-//            var nodeList = Array.prototype.slice.call(result.children),
-//                nodeSplice = [],
-//                i = 0;
-//            
-//            for (i; i < nodeList.lenght; i += 1) {
-//                console.log(nodeList[i]);
-//                nodeSplice.push(nodeList[i].id);
-//            }
-//            
-//            console.log(nodeList, nodeSplice);
-//
-//        },
-//        
-//        countAdd: function (id) {
-////            data.map(id);
-//            selected.push(data[id]);
-//            console.log(selected);
-//        },
         
         select: function (e) {
+            
             // EXECUTE FUNCTION ON TARGET
             if (e.target !== e.currentTarget) {
                 var clickedItem = e.target.parentElement,
                     id = e.target.parentElement.id,
                     item = e;
                 
+                // IF THE SELECTED ITEM HAS THE CLASS 'SELECTED'
                 if (clickedItem.classList.contains('selected')) {
+                    
+                    // TOGGLE CLASS SELECTED AND REMOVE DETAILS
                     clickedItem.classList.toggle('selected');
                     console.log(id, clickedItem, e);
                     app.remove(clickedItem);
+                    
                 } else {
+                    
+                    // SELECT ALL ARTICLE
+                    var articles = document.getElementsByTagName('article');
+                                            
+                    // REMOVE CLASS FROM ALL ARTICLES
+                    [].forEach.call(articles, function (el) {
+                        el.classList.remove('selected');
+                    });
+
+                    console.log('class removed');
+
+                    // ADD CLASS TO SELECTED ELEMENT AND APPEND THE DETAIL
                     clickedItem.classList.toggle('selected');
                     console.log(id, clickedItem, e);
-//                    app.countAdd(id);
                     app.append(clickedItem);
+                           
                 }
             }
             e.stopPropagation();
@@ -185,34 +179,50 @@
         
         append: function (item) {
             
-            microAjax('http://funda.kyrandia.nl/feeds/Aanbod.svc/json/detail/e2d60e885b8742d4b0648300e3703bd7/koop/' + item.id + '/', function (res) {
-                var detail = JSON.parse(res);
-                console.log(detail);
+            // CHECK IF ELEMENT IS ALREADY PRESENT
+            if (document.getElementById('detail')) {
                 
-                // CREATE NEW ELEMENTS FOR DETAIL
-                var container = document.createElement('div');
-                container.innerHTML = '<header><h2 data-bind="Adres"></h2><p data-bind="Plaats"></p><p data-bind="Postcode"></p></header><table><thead><tr><th>Informatie</th></tr></thead><tbody><tr><td>Soort Woning</td><td data-bind="SoortWoning"></td></tr><tr><td>Bouwjaar</td><td data-bind="Bouwjaar"></td></tr><tr><td>Ligging</td><td data-bind="Ligging"></td></tr><tr><td>Perceeloppervlakte</td><td data-bind="PerceelOppervlakte"></td></tbody></table>';
+                var detail = document.getElementById('detail');
+                detail.parentElement.removeChild(detail);
                 
-                // SET ATTRIBUTES FOR DATA BINDING
-                container.setAttribute('id', 'detail');
+                app.append(item);
                 
-                // APPEND DETAIL TO PARENT
-                item.appendChild(container);
-                
-                // DIRECTIVES FOR CONTENT
-                
-                var directives = {
-                    PerceelOppervlakte: {
-                        text: function (params) {
-                            return this.PerceelOppervlakte + " M2";
-                        }
-                    }
-                };
+            } else {
+            
+                // GET DETAIL DATA
+                microAjax('http://funda.kyrandia.nl/feeds/Aanbod.svc/json/detail/e2d60e885b8742d4b0648300e3703bd7/koop/' + item.id + '/', function (res) {
+                    var detail = JSON.parse(res);
+                    console.log(detail);
 
-                // RENDER DETAIL
-                Transparency.render(document.getElementById('detail'), detail, directives);
+                    // CREATE NEW ELEMENTS FOR DETAIL
+                    var container = document.createElement('div');
+                    container.innerHTML = '<div class="left"><header><h2 data-bind="Adres"></h2><p data-bind="Plaats"></p><p data-bind="Postcode"></p></header><table><thead><tr><th colspan="2">Informatie</th></tr></thead><tbody><tr><td>Soort Woning</td><td data-bind="SoortWoning"></td></tr><tr><td>Bouwjaar</td><td data-bind="Bouwjaar"></td></tr><tr><td>Ligging</td><td data-bind="Ligging"></td></tr><tr><td>Perceeloppervlakte</td><td data-bind="PerceelOppervlakte"></td></tbody></table></div><div class="right"><img data-bind="media"/></div>';
+
+                    // SET ATTRIBUTES FOR DATA BINDING
+                    container.setAttribute('id', 'detail');
+
+                    // APPEND DETAIL TO PARENT
+                    item.appendChild(container);
+
+                    // DIRECTIVES FOR CONTENT
+                    var directives = {
+                        PerceelOppervlakte: {
+                            text: function (params) {
+                                return this.PerceelOppervlakte + " M2";
+                            }
+                        },
+                        media: {
+                            src: function (params) {
+                                return this.Media[1].MediaItems[3].Url;
+                            }
+                        }
+                    };
+
+                    // RENDER DETAIL
+                    Transparency.render(document.getElementById('detail'), detail, directives);
                 
-            });
+                });
+            }
         },
         
         remove: function (item) {
