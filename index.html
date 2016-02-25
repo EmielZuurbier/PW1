@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Funda</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Emiel Zuurbier">
+        <meta name="description" content="Prototype for Funda">
+        
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style/style.css">
+    </head>
+    <body>
+        <header role="heading">
+            <div class="top">
+                <h1><span>Funda</span></h1>
+                <nav role="navigation">
+                    <button role="button"><i class="fa fa-bars"></i></button>
+                </nav>
+            </div>
+            <form role="form" action="javascript:void(0)" class="active">
+                <input type="text" name="cOmgeving" id="carea" placeholder="Omgeving">
+                <input type="number" name="cBudget" id="cbudget" placeholder="Voer uw budget in" required>
+                <button type="submit" id="csubmit">Bereken</button>
+            </form>
+        </header>
+        
+        <main>
+            <section id="result" data-bind="data">
+                <article data-bind="id">
+<!--                    <i class="fa fa-check"></i>-->
+                    <img data-bind="FotoLargest"/>
+                </article>
+            </section>
+        </main>
+        
+        <section id="intro">
+            <form role="form" action="javascript:void(0);">
+                <img src="media/funda-logo.svg">
+                <legend>Uw <span>droomhuis</span> op basis van uw <span>budget</span></legend>
+                <div class="fields">
+                    <input type="text" name="omgeving" id="area" placeholder="Omgeving">
+                    <input type="number" name="budget" id="budget" placeholder="Voer uw budget in" required>
+                    <button type="submit" id="submit">Bereken</button>
+                </div>
+            </form>
+        </section>
+        
+        <div id="loader"><img src="media/ring-alt.svg"</div>
+        
+        <script type="text/javascript" src="script/microajax.minified.js"></script>
+        <script type="text/javascript" src="script/transparency.min.js"></script>
+        <script type="text/javascript" src="script/loader.js"></script>
+        <script type="text/javascript" src="script/event.js"></script>
+        <script type="text/javascript" src="script/app.js"></script>
+    </body>
+</html>
