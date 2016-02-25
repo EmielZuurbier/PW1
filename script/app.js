@@ -196,7 +196,7 @@
 
                     // CREATE NEW ELEMENTS FOR DETAIL
                     var container = document.createElement('div');
-                    container.innerHTML = '<div class="left"><header><h2 data-bind="Adres"></h2><p data-bind="Plaats"></p><p data-bind="Postcode"></p></header><table><thead><tr><th colspan="2">Informatie</th></tr></thead><tbody><tr><td>Soort Woning</td><td data-bind="SoortWoning"></td></tr><tr><td>Bouwjaar</td><td data-bind="Bouwjaar"></td></tr><tr><td>Ligging</td><td data-bind="Ligging"></td></tr><tr><td>Perceeloppervlakte</td><td data-bind="PerceelOppervlakte"></td></tbody></table></div><div class="right"><img data-bind="media"/></div>';
+                    container.innerHTML = '<div class="left"><header><h2 data-bind="Adres"></h2><p data-bind="locatie"></p></header><table><thead><tr><th colspan="2">Informatie</th></tr></thead><tbody><tr><td>Soort Woning</td><td data-bind="SoortWoning"></td></tr><tr><td>Bouwjaar</td><td data-bind="Bouwjaar"></td></tr><tr><td>Ligging</td><td data-bind="Ligging"></td></tr><tr><td>Woonoppervlakte</td><td data-bind="WoonOppervlakte"></td></tbody></table></div><div class="right"><img data-bind="media"/></div>';
 
                     // SET ATTRIBUTES FOR DATA BINDING
                     container.setAttribute('id', 'detail');
@@ -206,14 +206,19 @@
 
                     // DIRECTIVES FOR CONTENT
                     var directives = {
-                        PerceelOppervlakte: {
+                        WoonOppervlakte: {
                             text: function (params) {
-                                return this.PerceelOppervlakte + " M2";
+                                return this.WoonOppervlakte + " M2";
                             }
                         },
                         media: {
                             src: function (params) {
                                 return this.Media[1].MediaItems[3].Url;
+                            }
+                        },
+                        locatie: {
+                            text: function (params) {
+                                return this.Postcode + " " + this.Plaats;
                             }
                         }
                     };
