@@ -170,14 +170,27 @@
                     item = e;
                 
                 if (clickedItem.classList.contains('selected')) {
+                    
                     clickedItem.classList.toggle('selected');
                     console.log(id, clickedItem, e);
                     app.remove(clickedItem);
+                    
                 } else {
+                    
+                    var articles = document.getElementsByTagName('article');
+                                            
+                    // REMOVE CLASS FROM ELEMENT
+                    [].forEach.call(articles, function (el) {
+                        el.classList.remove('selected');
+                    });
+
+                    console.log('class removed');
+
+                    // ADD CLASS TO SELECTED ELEMENT
                     clickedItem.classList.toggle('selected');
                     console.log(id, clickedItem, e);
-//                    app.countAdd(id);
                     app.append(clickedItem);
+                           
                 }
             }
             e.stopPropagation();
@@ -185,34 +198,44 @@
         
         append: function (item) {
             
-            microAjax('http://funda.kyrandia.nl/feeds/Aanbod.svc/json/detail/e2d60e885b8742d4b0648300e3703bd7/koop/' + item.id + '/', function (res) {
-                var detail = JSON.parse(res);
-                console.log(detail);
+            // CHECK IF ELEMENT IS ALREADY PRESENT
+            if (document.getElementById('detail')) {
                 
-                // CREATE NEW ELEMENTS FOR DETAIL
-                var container = document.createElement('div');
-                container.innerHTML = '<header><h2 data-bind="Adres"></h2><p data-bind="Plaats"></p><p data-bind="Postcode"></p></header><table><thead><tr><th>Informatie</th></tr></thead><tbody><tr><td>Soort Woning</td><td data-bind="SoortWoning"></td></tr><tr><td>Bouwjaar</td><td data-bind="Bouwjaar"></td></tr><tr><td>Ligging</td><td data-bind="Ligging"></td></tr><tr><td>Perceeloppervlakte</td><td data-bind="PerceelOppervlakte"></td></tbody></table>';
+                var detail = document.getElementById('detail');
+                detail.parentElement.removeChild(detail);
                 
-                // SET ATTRIBUTES FOR DATA BINDING
-                container.setAttribute('id', 'detail');
+                app.append(item);
                 
-                // APPEND DETAIL TO PARENT
-                item.appendChild(container);
-                
-                // DIRECTIVES FOR CONTENT
-                
-                var directives = {
-                    PerceelOppervlakte: {
-                        text: function (params) {
-                            return this.PerceelOppervlakte + " M2";
-                        }
-                    }
-                };
+            } else {
+            
+                microAjax('http://funda.kyrandia.nl/feeds/Aanbod.svc/json/detail/e2d60e885b8742d4b0648300e3703bd7/koop/' + item.id + '/', function (res) {
+                    var detail = JSON.parse(res);
+                    console.log(detail);
 
-                // RENDER DETAIL
-                Transparency.render(document.getElementById('detail'), detail, directives);
+                    // CREATE NEW ELEMENTS FOR DETAIL
+                    var container = document.createElement('div');
+                    container.innerHTML = '<header><h2 data-bind="Adres"></h2><p data-bind="Plaats"></p><p data-bind="Postcode"></p></header><table><thead><tr><th>Informatie</th></tr></thead><tbody><tr><td>Soort Woning</td><td data-bind="SoortWoning"></td></tr><tr><td>Bouwjaar</td><td data-bind="Bouwjaar"></td></tr><tr><td>Ligging</td><td data-bind="Ligging"></td></tr><tr><td>Perceeloppervlakte</td><td data-bind="PerceelOppervlakte"></td></tbody></table>';
+
+                    // SET ATTRIBUTES FOR DATA BINDING
+                    container.setAttribute('id', 'detail');
+
+                    // APPEND DETAIL TO PARENT
+                    item.appendChild(container);
+
+                    // DIRECTIVES FOR CONTENT
+                    var directives = {
+                        PerceelOppervlakte: {
+                            text: function (params) {
+                                return this.PerceelOppervlakte + " M2";
+                            }
+                        }
+                    };
+
+                    // RENDER DETAIL
+                    Transparency.render(document.getElementById('detail'), detail, directives);
                 
-            });
+                });
+            }
         },
         
         remove: function (item) {
