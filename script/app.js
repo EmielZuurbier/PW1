@@ -42,8 +42,8 @@
         calculate: function (budget, area) {
             
             // SELECTING AND TRANSFORMING VALUES FROM INPUT
-            var budgetHigh = Math.round(budget * 1.2),
-                budgetLow = Math.round(budget * 0.8),
+            var budgetHigh = Math.round(budget * 1.05),
+                budgetLow = Math.round(budget * 0.95),
                 resubmitArea = document.getElementById('carea');
             
             // REMOVE SPACES FROM INPUT VALUE
@@ -196,7 +196,7 @@
 
                     // CREATE NEW ELEMENTS FOR DETAIL
                     var container = document.createElement('div');
-                    container.innerHTML = '<div class="left"><header><h2 data-bind="Adres"></h2><p data-bind="locatie"></p></header><table><thead><tr><th colspan="2">Informatie</th></tr></thead><tbody><tr><td>Soort Woning</td><td data-bind="SoortWoning"></td></tr><tr><td>Bouwjaar</td><td data-bind="Bouwjaar"></td></tr><tr><td>Ligging</td><td data-bind="Ligging"></td></tr><tr><td>Woonoppervlakte</td><td data-bind="WoonOppervlakte"></td></tbody></table></div><div class="right"><img data-bind="media"/></div>';
+                    container.innerHTML = '<div class="left"><header><h2 data-bind="Adres"></h2><p data-bind="locatie"></p></header><table><thead><tr><th colspan="2">Informatie</th></tr></thead><tbody><tr><td>Soort Woning</td><td data-bind="SoortWoning"></td></tr><tr><td>Woonlagen</td><td data-bind="AantalWoonlagen"></td></tr><tr><td>Ligging</td><td data-bind="Ligging"></td></tr><tr><td>Woonoppervlakte</td><td data-bind="WoonOppervlakte"></td></tbody></table></div><div class="right"><img data-bind="media"/></div>';
 
                     // SET ATTRIBUTES FOR DATA BINDING
                     container.setAttribute('id', 'detail');
