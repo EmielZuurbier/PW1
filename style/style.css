@@ -140,6 +140,7 @@ body {
 }
 
 #intro label {
+    display: none;
     visibility: hidden;
 }
 
@@ -339,6 +340,10 @@ header[role=heading] form {
     -webkit-transition: 0.5s;
     transition: 0.5s;
     z-index: 77;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
 }
 
 header[role=heading] input {
@@ -482,7 +487,7 @@ article.selected img {
     filter: grayscale(100%);
 }
 
-article:hover img {
+article:hover img, article a:focus img, article a:hover img {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }

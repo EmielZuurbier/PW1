@@ -33,17 +33,21 @@
             <section id="result" data-bind="data">
                 <article data-bind="id">
 <!--                    <i class="fa fa-check"></i>-->
-                    <img data-bind="FotoLarge"/>
+                    <a href="#">
+                        <img data-bind="FotoLarge"/>
+                    </a>
                 </article>
             </section>
         </main>
         
         <section id="intro">
             <form role="form" action="javascript:void(0);">
-                <img src="media/funda-logo.svg">
+                <img src="media/funda-logo.svg" alt="Funda">
                 <legend>Uw <span>droomhuis</span> op basis van uw <span>budget</span></legend>
                 <div class="fields">
+                    <label for="omgeving">Omgeving</label>
                     <input type="text" name="omgeving" id="area" placeholder="Omgeving">
+                    <label for="budget">Budget</label>
                     <input type="number" name="budget" id="budget" placeholder="Budget" required>
                     <button type="submit" id="submit">Bereken</button>
                 </div>
