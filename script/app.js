@@ -96,16 +96,25 @@
                 Foto: {
                     src: function (params) {
                         return this.Foto;
+                    },
+                    alt: function (params) {
+                        return this.Adres;
                     }
                 },
                 FotoLarge: {
                     src: function (params) {
                         return this.FotoLarge;
+                    },
+                    alt: function (params) {
+                        return this.Adres;
                     }
                 },
                 FotoLargest: {
                     src: function (params) {
                         return this.FotoLargest;
+                    },
+                    alt: function (params) {
+                        return this.Adres;
                     }
                 },
                 link: {
