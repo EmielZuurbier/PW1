@@ -139,7 +139,7 @@ body {
     justify-content: flex-start;
 }
 
-#intro label {
+form label {
     display: none;
     visibility: hidden;
 }
@@ -311,6 +311,10 @@ nav button:hover {
 nav button:active, nav button:focus {
     background-color: #e6a312;
     outline: 0;
+}
+
+nav button span {
+    display: none;
 }
 
 header[role=heading] form {

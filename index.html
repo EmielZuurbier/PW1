@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="nl">
     <head>
         <title>Funda</title>
         <meta charset="utf-8">
@@ -19,12 +19,14 @@
             <div class="top">
                 <h1><span>Funda</span></h1>
                 <nav role="navigation">
-                    <button role="button"><i class="fa fa-bars"></i></button>
+                    <button role="button"><span>Menu</span><i class="fa fa-bars"></i></button>
                 </nav>
             </div>
             <form role="form" action="javascript:void(0)" class="active">
-                <input type="text" name="cOmgeving" id="carea" placeholder="Omgeving">
-                <input type="number" name="cBudget" id="cbudget" placeholder="Budget" required>
+                <label for="carea">Omgeving</label>
+                <input type="text" name="carea" id="carea" placeholder="Omgeving">
+                <label for="cbudget">Budget</label>
+                <input type="number" name="cbudget" id="cbudget" placeholder="Budget" required>
                 <button type="submit" id="csubmit">Bereken</button>
             </form>
         </header>
@@ -32,10 +34,7 @@
         <main>
             <section id="result" data-bind="data">
                 <article data-bind="id">
-<!--                    <i class="fa fa-check"></i>-->
-                    <a href="#">
-                        <img data-bind="FotoLarge"/>
-                    </a>
+                        <img data-bind="FotoLarge" onerror="this.src='media/error.jpg'; this.attr('alt', 'Error');"/>
                 </article>
             </section>
         </main>
