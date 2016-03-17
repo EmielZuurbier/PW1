@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="style/style.css">
     </head>
     <body>
-        <header role="heading">
+        <header role="banner">
             <div class="top">
                 <h1><span>Funda</span></h1>
                 <nav role="navigation">
@@ -33,16 +33,24 @@
         
         <main>
             <section id="result" data-bind="data">
-                <article data-bind="id">
-                        <img data-bind="FotoLarge" onerror="this.src='media/error.jpg'; this.attr('alt', 'Error');"/>
-                </article>
+                <a href="#">
+                    <article data-bind="id">
+                            <img data-bind="FotoLarge" onerror="this.src='media/error.jpg'; this.attr('alt', 'Error');"/>
+                    </article>
+                </a>
             </section>
+            <noscript>
+                <h2>Uw JavaScript is uitgeschakeld!</h2>
+                <p>JavaScript is de motor van deze website en zorgt ervoor dat uw resultaten gevonden kunnen worden.</p>
+                <p>Mocht uw browser te oud zijn voor deze technologie, dan wordt u aangeraden te kijken naar een nieuwe browser om het web mee te bezoeken.</p>
+                <p><a href="http://browsehappy.com/">Browsehappy</a> geeft u een selectie aan geschikte browsers.</p>
+            </noscript>
         </main>
         
-        <section id="intro">
+        <section id="intro" class="done hide">
             <form role="form" action="javascript:void(0);">
                 <img src="media/funda-logo.svg" alt="Funda">
-                <legend>Uw <span>droomhuis</span> op basis van uw <span>budget</span></legend>
+                <h2>Uw <span>droomhuis</span> op basis van uw <span>budget</span></h2>
                 <div class="fields">
                     <label for="omgeving">Omgeving</label>
                     <input type="text" name="omgeving" id="area" placeholder="Omgeving">
@@ -53,7 +61,7 @@
             </form>
         </section>
         
-        <div id="loader"><img src="media/ring-alt.svg"</div>
+        <div id="loader"><img src="media/ring-alt.svg"/></div>
         
         <script type="text/javascript" src="script/microajax.minified.js"></script>
         <script type="text/javascript" src="script/transparency.min.js"></script>

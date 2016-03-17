@@ -9,7 +9,15 @@
         resubmit = document.getElementById('csubmit'),
         result = document.getElementById('result'),
         data = [],
-        selected = [];
+        selected = [],
+        header = document.querySelector('header[role="banner"]'),
+        main = document.querySelector('main'),
+        intro = document.getElementById('intro'),
+        articles;
+    
+    header.classList.add('hidden');
+    main.classList.add('hidden');
+    intro.classList.remove('done', 'hide');
     
     // DATA OBJECT
     var app = {
@@ -85,8 +93,7 @@
         render: function (output, budget) {
             
             // CREATING VARIABLES
-            var intro = document.getElementById('intro'),
-                result = document.getElementById('result');
+            var result = document.getElementById('result');
             
             data = output.Objects;
 
@@ -137,17 +144,26 @@
             console.log(data);
 
             // START RENDERING
-            Transparency.render(result, data, directives);
+            Transparency.render(result, data, directives);            
 
             // SHOW SCREEN WHEN FINISHED
             loader.hide();
+            
+            main.classList.remove('hidden');
+            header.classList.remove('hidden');
+            
             intro.classList.add('done');
             window.setTimeout(function () {
                 intro.classList.add('hide');
             }, 1000);
             
+            articles = document.querySelectorAll('article');
+            
+            for (var i = 0; i < articles.length; i += 1) {
+                articles[i].addEventListener('click', app.select, false);
+            }
+            
         },
-        
         select: function (e) {
             
             // EXECUTE FUNCTION ON TARGET
@@ -183,6 +199,7 @@
                            
                 }
             }
+            e.preventDefault();
             e.stopPropagation();
         },
         
@@ -252,6 +269,6 @@
     // EVENTLISTENERS
     submit.addEventListener('click', app.formOne, false);
     resubmit.addEventListener('click', app.formTwo, false);
-    result.addEventListener('click', app.select, false);
+//    result.addEventListener('click', app.select, false);
     
 }());

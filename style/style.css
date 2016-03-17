@@ -43,6 +43,16 @@ body {
 
 /* --------------------------------------------------------- TEXT */
 
+p {
+    font-size: 1em;
+    margin-bottom: 0.8em;
+}
+
+a {
+    color: #3888C5;
+    text-decoration: none;
+}
+
 /* --------------------------------------------------------- INTRO */
 
 #intro {
@@ -93,11 +103,12 @@ body {
     padding: 2em;
 }
 
-#intro legend {
+#intro h2 {
     opacity: 0;
     width: 100%;
     text-align: center;
     font-size: 1.7em;
+    font-weight: 500;
     margin-bottom: 1em;
     -webkit-animation-name: fadeDown;
     animation-name: fadeDown;
@@ -111,7 +122,7 @@ body {
     animation-delay: 1s;
 }
 
-#intro legend span {
+#intro h2 span {
     color: #55241A;
 }
 
@@ -194,7 +205,7 @@ form label {
 
 /* --------------------------------------------------------- HEADER */
 
-header[role=heading] {
+header[role="banner"] {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -227,13 +238,17 @@ header[role=heading] {
     z-index: 88;
 }
 
-header[role=heading].active {
+header[role="banner"].active {
     max-height: 3.5em;
     -webkit-transition-delay: 0s;
     transition-delay: 0s;
 }
 
-header[role=heading] .top {
+header[role="banner"].hidden {
+    display: none;
+}
+
+header[role="banner"] .top {
     -webkit-box-flex: 1;
     -webkit-flex: 1 1 100%;
     -ms-flex: 1 1 100%;
@@ -317,7 +332,7 @@ nav button span {
     display: none;
 }
 
-header[role=heading] form {
+header[role="banner"] form {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -350,7 +365,7 @@ header[role=heading] form {
     justify-content: center;
 }
 
-header[role=heading] input {
+header[role="banner"] input {
     -webkit-box-flex: 1;
     -webkit-flex: 1 2 10em;
     -ms-flex: 1 2 10em;
@@ -358,7 +373,7 @@ header[role=heading] input {
     margin: 0.5em 0.5em 0.5em 0;
 }
 
-header[role=heading] form button {
+header[role="banner"] form button {
     margin: 0.5em 0
 }
 
@@ -389,6 +404,10 @@ main {
     position: relative;
     -webkit-transition: 0.5s;
     transition: 0.5s;
+}
+
+main.hidden {
+    display: none;
 }
 
 main.active {
@@ -426,11 +445,14 @@ main section {
     
 }
 
-article {
+section > a {
     -webkit-box-flex: 1;
     -webkit-flex: 1 1 15em;
     -ms-flex: 1 1 15em;
     flex: 1 1 15em;
+}
+
+article {
     display: block;
     position: relative;
     overflow: hidden;
@@ -693,6 +715,13 @@ img {
     animation-iteration-count: 1;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
+}
+
+noscript {
+    text-align: center;
+    width: 100%;
+    padding: 2em;
+    border-bottom: 0.0625em solid #3888C5;
 }
 
 /* --------------------------------------------------------- ANIMATION */
