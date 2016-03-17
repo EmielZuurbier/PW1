@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+    <head>
+        <title>Funda</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Emiel Zuurbier">
+        <meta name="description" content="Prototype for Funda">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style/style.css">
+    </head>
+    <body>
+        <header role="banner">
+            <div class="top">
+                <h1><span>Funda</span></h1>
+                <nav role="navigation">
+                    <button role="button"><span>Menu</span><i class="fa fa-bars"></i></button>
+                </nav>
+            </div>
+            <form role="form" action="javascript:void(0)" class="active">
+                <label for="area">Omgeving</label>
+                <input type="text" name="area" id="area" placeholder="Omgeving">
+                <label for="budget">Budget</label>
+                <input type="number" name="budget" id="budget" placeholder="Budget" required>
+                <button type="submit" id="submit">Bereken</button>
+            </form>
+        </header>
+        
+        <main>
+            <section id="result">
+                <ul data-bind="data" id="data">
+                    <li data-bind="id">
+                        <a class="link">
+                            <picture>
+                                <source data-bind="FotoMedium" media="(max-width: 480px)" onerror="this.src='media/error.jpg'; this.attr('alt', 'Error');">
+                                <source data-bind="FotoLarge" media="(max-width: 768px)" onerror="this.src='media/error.jpg'; this.attr('alt', 'Error');">
+                                <source data-bind="FotoLargest" onerror="this.src='media/error.jpg'; this.attr('alt', 'Error');">
+                                <img data-bind="FotoLarge" onerror="this.src='media/error.jpg'; this.attr('alt', 'Error');">
+                            </picture>
+                            <h3 data-bind="Adres" class="fallback"></h3>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            <noscript>
+                <h2>Uw JavaScript is uitgeschakeld!</h2>
+                <p>JavaScript is de motor van deze website en zorgt ervoor dat uw resultaten gevonden kunnen worden.</p>
+                <p>Mocht uw browser te oud zijn voor deze technologie, dan wordt u aangeraden te kijken naar een nieuwe browser om het web mee te bezoeken.</p>
+                <p><a href="http://browsehappy.com/">Browsehappy</a> geeft u een selectie aan geschikte browsers.</p>
+            </noscript>
+        </main>
+        
+        
+        <div id="loader"><img src="media/ring-alt.svg"/></div>
+        
+        <script type="text/javascript" src="script/microajax.min.js"></script>
+        <script type="text/javascript" src="script/transparency.min.js"></script>
+        <script type="text/javascript" src="script/app.js"></script>
+    </body>
+</html>

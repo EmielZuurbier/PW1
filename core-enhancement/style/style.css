@@ -1,0 +1,837 @@
+/*
+
+STYLESHEET FOR FUNDA
+AUTHOR: EMIEL ZUURBIER
+MADE FOR EVERYTHING WEB, CMD AMSTERDAM
+
+*/
+
+
+
+/* --------------------------------------------------------- GENERAL */
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+    height: 100%;
+    font-family: 'Open Sans', arial, sans-serif;
+    background: #e7f1f5;
+}
+
+/* --------------------------------------------------------- TEXT */
+
+p {
+    font-size: 1em;
+    margin-bottom: 0.8em;
+}
+
+a {
+    color: #3888C5;
+    text-decoration: none;
+}
+
+/* --------------------------------------------------------- INTRO */
+
+#intro {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #F8B000;
+    color: #ffffff;
+    z-index: 99;
+}
+
+#intro img {
+    display: block;
+    margin: 0 auto 2em auto;
+    width: 8em;
+    height: auto;
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+    -webkit-animation-name: fade;
+    animation-name: fade;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: .5s;
+    animation-delay: .5s;
+    opacity: 0;
+}
+
+#intro form {
+    display: block;
+    width: 100%;
+    max-width: 36em;
+    padding: 2em;
+}
+
+#intro h2 {
+    opacity: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.7em;
+    font-weight: 500;
+    margin-bottom: 1em;
+    -webkit-animation-name: fadeDown;
+    animation-name: fadeDown;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+}
+
+#intro h2 span {
+    color: #55241A;
+}
+
+#intro .fields {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    border: 0;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}
+
+form label {
+    display: none;
+    visibility: hidden;
+}
+
+#intro input, #intro button {
+    opacity: 0;
+    margin: 0 0.25em 0.5em;
+    -webkit-animation-name: fadeUp;
+    animation-name: fadeUp;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+}
+
+#intro input[type="text"] {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 100%;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%;
+}
+
+#intro input[type="number"] {
+    -webkit-box-flex: 3 2 10em;
+    -webkit-flex: 3 2 10em;
+    -ms-flex: 3 2 10em;
+    flex: 3 2 10em;
+}
+
+#intro button {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+#intro.done {
+    -webkit-animation-name: fade;
+    animation-name: fade;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-direction: reverse;
+    animation-direction: reverse;
+    -webkit-animation-fill-mode: forwards ;
+    animation-fill-mode: forwards;
+}
+
+
+/* --------------------------------------------------------- HEADER */
+
+header[role="banner"] {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    position: fixed;
+    width: 100%;
+    max-height: 15em;
+    background-color: #F8B000;
+    overflow: hidden;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    -webkit-transition-delay: 0.5s;
+    transition-delay: 0.5s;
+    z-index: 88;
+}
+
+header[role="banner"].active {
+    max-height: 3.5em;
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+}
+
+header[role="banner"].hidden {
+    display: none;
+}
+
+header[role="banner"] .top {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 100%;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    -ms-grid-row-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    height: 3.5em;
+    padding: 0 0 0 1em;
+    position: relative;
+    border-bottom: 2px solid #6EC8E5;
+    background-color: #F8B000;
+    z-index: 88;
+}
+
+.top h1 {
+    height: 1.25em;
+    width: 3.5em;
+    background: url(../media/funda-logo.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.top h1 span {
+    display: none;
+}
+
+nav {
+    display: block;
+    height: 100%;
+    border-left: 1px solid #e6a312;
+}
+
+nav button {
+    background: none;
+    height: 100%;
+    border: 0;
+    color: #ffffff;
+    font-size: 1.5em;
+    padding: 0 1rem;
+    width: 100%;
+}
+
+nav button i {
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+}
+
+nav button.active i {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+nav button:hover {
+    background-color: #e6a312;
+}
+
+nav button:active, nav button:focus {
+    background-color: #e6a312;
+    outline: 0;
+}
+
+nav button span {
+    display: none;
+}
+
+header[role="banner"] form {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0 1em;
+    background-color: #E7F1F5;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    z-index: 77;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+header[role="banner"] input {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 2 10em;
+    -ms-flex: 1 2 10em;
+    flex: 1 2 10em;
+    margin: 0.5em 0.5em 0.5em 0;
+}
+
+header[role="banner"] form button {
+    margin: 0.5em 0
+}
+
+/* --------------------------------------------------------- RESULTS */
+
+main {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding-top: 116px;
+    position: relative;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+main.hidden {
+    display: none;
+}
+
+main.active {
+    padding-top: 3.5em;
+    -webkit-transition-delay: 0.5s;
+    transition-delay: 0.5s;
+}
+
+main section {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    position: relative;
+    background: url('../media/gezinswoning-winter-silhouet.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    
+}
+
+section ul {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+li {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: block;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 15em;
+    -ms-flex: 1 1 15em;
+    flex: 1 1 15em;
+}
+
+li.selected {
+    margin-bottom: 24em;
+    position: static;
+    overflow: visible;
+}
+
+li h3 {
+    display: none;
+}
+
+li h3.fallback {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.2);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+li.selected .fa {
+    opacity: 1;
+}
+
+li img {
+    display: block;
+    position: relative;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+li.selected img {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+li:hover h3 {
+    background-color: rgba(248, 176, 0, 0.3);
+}
+
+li.selected:hover img {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+li > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#detail {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: absolute;
+    height: 24em;
+    width: 100%;
+    left: 0;
+    padding: 1em;
+    color: #1a1a1a;
+    background-color: transparent;
+    overflow: hidden;
+    -webkit-animation-name: fadeUp;
+    animation-name: fadeUp;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+}
+
+#detail .left, #detail .right {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 10em;
+    -ms-flex: 1 1 10em;
+    flex: 1 1 10em;
+}
+
+#detail .left {
+    padding-right: 0.25em;
+}
+
+#detail .right {
+    padding-left: 0.25em;
+}
+
+#detail header {
+    color: #3888C5;
+    margin-bottom: 1em;
+}
+
+#detail img {
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+}
+
+table {
+    text-align: left;
+}
+
+td:first-of-type {
+    color: #999;
+    padding-right: 0.5em;
+}
+
+td:last-of-type {
+    text-transform: capitalize;
+}
+
+th, td {
+    padding: 0.5em 0;
+}
+
+
+/* --------------------------------------------------------- TOOLS */
+
+figcaption {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: end;
+    -webkit-align-items: flex-end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    padding: 1em;
+    color: #ffffff;
+    background: -webkit-linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.3), rgba(0,0,0,0.8));
+    background: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.3), rgba(0,0,0,0.8));
+}
+
+button {
+    padding: 0.5em 1.5em;
+    font-weight: 400;
+    height: 44px;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    white-space: nowrap;
+    background-color: #3888C5;
+    color: #ffffff;
+    font-size: 1em;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.1),inset 0 0 0 rgba(0,0,0,0.1);
+    -webkit-transition: background 250ms cubic-bezier(0.23, 1, 0.32, 1),box-shadow 250ms cubic-bezier(0.23, 1, 0.32, 1);
+    transition: background 250ms cubic-bezier(0.23, 1, 0.32, 1),box-shadow 250ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+button:hover {
+    background-color: #327AB1;
+}
+
+input[type="text"], input[type="number"] {
+    padding-left: 11.2px;
+    border: 1px solid #fff;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    height: 44px;
+    color: #3888C5;
+    border-radius: 2px;
+    font-size: 1em;
+}
+
+input[type="number"]:focus, input[type="text"]:focus {
+    border: 1px solid #84D0F0;
+    outline: 0;
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.hide {
+    display: none !important;
+}
+
+#loader {
+    display: none;
+    position: fixed;
+    width: 5em;
+    height: 5em;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: rgba(0,0,0,0.5);
+    box-shadow: 0 0 0 50vw rgba(0,0,0,0.5);
+    opacity: 0;
+    z-index: 99;
+}
+
+#loader.active {
+    display: block;
+    -webkit-animation-name: fade;
+    animation-name: fade;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+noscript {
+    text-align: center;
+    width: 100%;
+    padding: 2em;
+    border-bottom: 0.0625em solid #3888C5;
+}
+
+/* --------------------------------------------------------- ANIMATION */
+
+@-webkit-keyframes fade {
+    from    { opacity: 0; }
+    to      { opacity: 1; }
+}
+
+@keyframes fade {
+    from    { opacity: 0; }
+    to      { opacity: 1; }
+}
+
+@-webkit-keyframes fadeUp {
+    from    { opacity: 0; -webkit-transform: translateY(10px); transform: translateY(10px); }
+    to      { opacity: 1; -webkit-transform: translateY(0px); transform: translateY(0px); }
+}
+
+@keyframes fadeUp {
+    from    { opacity: 0; -webkit-transform: translateY(10px); transform: translateY(10px); }
+    to      { opacity: 1; -webkit-transform: translateY(0px); transform: translateY(0px); }
+}
+
+@-webkit-keyframes fadeDown {
+    from    { opacity: 0; -webkit-transform: translateY(-10px); transform: translateY(-10px); }
+    to      { opacity: 1; -webkit-transform: translateY(0px); transform: translateY(0px); }
+}
+
+@keyframes fadeDown {
+    from    { opacity: 0; -webkit-transform: translateY(-10px); transform: translateY(-10px); }
+    to      { opacity: 1; -webkit-transform: translateY(0px); transform: translateY(0px); }
+}
+
+@-webkit-keyframes fadeScale {
+    from    { opacity: 0; -webkit-transform: scale(0.5); transform: scale(0.5); }
+    to      { opacity: 1; -webkit-transform: scale(1); transform: scale(1); }
+}
+
+@keyframes fadeScale {
+    from    { opacity: 0; -webkit-transform: scale(0.1); transform: scale(0.1); }
+    to      { opacity: 1; -webkit-transform: scale(1); transform: scale(1); }
+}
+
+
+/* --------------------------------------------------------- MEDIA QUERIES */
+
+@media screen and (max-width: 750px) {
+    
+    article.selected {
+        margin-bottom: 30em;
+    }
+    
+    #detail {
+        height: 30em;
+    }
+    
+}
+
+
+@media screen and (max-width: 520px) {
+    
+    main {
+        padding-top: 176px;
+    }
+    
+}
+
+@media screen and (max-width: 452px) {
+    
+    article.selected {
+        margin-bottom: 40em;
+    }
+    
+    #detail {
+        height: 40em;
+    }
+    
+}
+
+
+@media screen and (max-width: 332px) {
+    
+    main {
+        padding-top: 236px;
+    }
+    
+    article:hover img {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+    
+}
