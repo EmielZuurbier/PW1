@@ -212,6 +212,10 @@
         
     };
     
-    submit.addEventListener('click', app.form, false);
+    if ('addEventListener' in document) {
+        submit.addEventListener('click', app.form, false);
+    } else {
+        submit.attachEvent("onclick", app.form);
+    }
     
 }());
