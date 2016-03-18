@@ -23,21 +23,29 @@
                 </nav>
             </div>
             <form role="form" action="javascript:void(0)" class="active">
-                <label for="carea">Omgeving</label>
-                <input type="text" name="carea" id="carea" placeholder="Omgeving">
-                <label for="cbudget">Budget</label>
-                <input type="number" name="cbudget" id="cbudget" placeholder="Budget" required>
-                <button type="submit" id="csubmit">Bereken</button>
+                <label for="area">Omgeving</label>
+                <input type="text" name="area" id="area" placeholder="Omgeving">
+                <label for="budget">Budget</label>
+                <input type="number" name="budget" id="budget" placeholder="Budget" required>
+                <button type="submit" id="submit">Bereken</button>
             </form>
         </header>
         
         <main>
-            <section id="result" data-bind="data">
-                <a href="#">
-                    <article data-bind="id">
-                            <img data-bind="FotoLarge" onerror="this.src='media/error.jpg'; this.attr('alt', 'Error');"/>
-                    </article>
-                </a>
+            <section id="result">
+                <ul data-bind="data" id="data">
+                    <li data-bind="id">
+                        <a class="link">
+                            <picture>
+                                <source data-bind="FotoMedium" media="(max-width: 480px)" onerror="this.src='media/error.jpg'; this.attr('alt', 'Error');">
+                                <source data-bind="FotoLarge" media="(max-width: 768px)" onerror="this.src='media/error.jpg'; this.attr('alt', 'Error');">
+                                <source data-bind="FotoLargest" onerror="this.src='media/error.jpg'; this.attr('alt', 'Error');">
+                                <img data-bind="FotoLarge" onerror="this.src='media/error.jpg'; this.attr('alt', 'Error');">
+                            </picture>
+                            <h3 data-bind="Adres" class="fallback"></h3>
+                        </a>
+                    </li>
+                </ul>
             </section>
             <noscript>
                 <h2>Uw JavaScript is uitgeschakeld!</h2>
@@ -47,26 +55,11 @@
             </noscript>
         </main>
         
-        <section id="intro" class="done hide">
-            <form role="form" action="javascript:void(0);">
-                <img src="media/funda-logo.svg" alt="Funda">
-                <h2>Uw <span>droomhuis</span> op basis van uw <span>budget</span></h2>
-                <div class="fields">
-                    <label for="omgeving">Omgeving</label>
-                    <input type="text" name="omgeving" id="area" placeholder="Omgeving">
-                    <label for="budget">Budget</label>
-                    <input type="number" name="budget" id="budget" placeholder="Budget" required>
-                    <button type="submit" id="submit">Bereken</button>
-                </div>
-            </form>
-        </section>
         
         <div id="loader"><img src="media/ring-alt.svg"/></div>
         
-        <script type="text/javascript" src="script/microajax.minified.js"></script>
+        <script type="text/javascript" src="script/microajax.min.js"></script>
         <script type="text/javascript" src="script/transparency.min.js"></script>
-        <script type="text/javascript" src="script/loader.js"></script>
-        <script type="text/javascript" src="script/event.js"></script>
         <script type="text/javascript" src="script/app.js"></script>
     </body>
 </html>
